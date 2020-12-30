@@ -36,7 +36,7 @@ FROM alpine:latest AS server
 ENV MAP_GENERATOR v7
 ENV SEED ""
 ENV MAX_USERS 15
-ENV ADMIN_NAME miney
+ENV ADMIN_NAME Miney
 ENV DEFAULT_PASSWORD ""
 
 COPY --from=compile /usr/local/share/minetest /usr/local/share/minetest
