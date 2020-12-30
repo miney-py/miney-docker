@@ -13,4 +13,4 @@ else
   echo "The admin username is '$ADMIN_NAME' and the default password for all users is '$DEFAULT_PASSWORD'."
 fi
 
-/usr/local/bin/minetestserver --config /var/lib/minetest/.minetest/minetest.conf --gameid minetest --worldname minetest
+exec /usr/local/bin/minetestserver --config /var/lib/minetest/.minetest/minetest.conf --gameid minetest --worldname minetest
