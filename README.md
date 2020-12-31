@@ -5,6 +5,7 @@
 | Env. variable  | Default value | Description 
 |---             | --- | ---
 | MAP_GENERATOR  | v7 | One of v7, flat, valleys, carpathian, v5, fractal, singlenode, v6
+| MG_FLAGS       | caves,dungeons,light,decorations,biomes | Global map generation attributes. <br />possible values: caves, dungeons, light, decorations, biomes, nocaves, nodungeons, nolight, nodecorations, nobiomes
 | SEED           | "" (empty) | With empty value, minetest generates a random seed
 | MAX_USERS      | 15 | How many can connect at the same time
 | ADMIN_NAME     | miney | This user gets admin privileges

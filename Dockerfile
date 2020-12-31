@@ -34,6 +34,7 @@ RUN cd build && \
 FROM alpine:latest AS server
 
 ENV MAP_GENERATOR v7
+ENV MG_FLAGS "caves,dungeons,light,decorations,biomes"
 ENV SEED ""
 ENV MAX_USERS 15
 ENV ADMIN_NAME Miney
