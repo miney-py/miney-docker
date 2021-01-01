@@ -39,6 +39,9 @@ ENV SEED ""
 ENV MAX_USERS 15
 ENV ADMIN_NAME Miney
 ENV DEFAULT_PASSWORD ""
+ENV MGFLAT_GROUND_LEVEL 8
+ENV WATER_LEVEL 1
+ENV STATIC_SPAWNPOINT ""
 
 COPY --from=compile /usr/local/share/minetest /usr/local/share/minetest
 COPY --from=compile /usr/local/bin/minetestserver /usr/local/bin/minetestserver

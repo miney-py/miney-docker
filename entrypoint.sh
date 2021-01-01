@@ -6,6 +6,9 @@ sed -i "s/{SEED}/$SEED/" /var/lib/minetest/.minetest/minetest.conf
 sed -i "s/{MAX_USERS}/$MAX_USERS/" /var/lib/minetest/.minetest/minetest.conf
 sed -i "s/{ADMIN_NAME}/$ADMIN_NAME/" /var/lib/minetest/.minetest/minetest.conf
 sed -i "s/{DEFAULT_PASSWORD}/$DEFAULT_PASSWORD/" /var/lib/minetest/.minetest/minetest.conf
+sed -i "s/{MGFLAT_GROUND_LEVEL}/$MGFLAT_GROUND_LEVEL/" /var/lib/minetest/.minetest/minetest.conf
+sed -i "s/{WATER_LEVEL}/$WATER_LEVEL/" /var/lib/minetest/.minetest/minetest.conf
+sed -i "s/{STATIC_SPAWNPOINT}/$STATIC_SPAWNPOINT/" /var/lib/minetest/.minetest/minetest.conf
 
 if [ "$DEFAULT_PASSWORD" = "" ]
 then
