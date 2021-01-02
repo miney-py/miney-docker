@@ -30,18 +30,12 @@ RUN cd build && \
 	git clone --depth=1 -b master https://github.com/miney-py/mineysocket.git /usr/local/share/minetest/mods/mineysocket && \
 	rm -fr ./mods/mineysocket/.git
 
-
 FROM alpine:latest AS server
 
-ENV MAP_GENERATOR v7
-ENV MG_FLAGS "caves,dungeons,light,decorations,biomes"
-ENV SEED ""
-ENV MAX_USERS 15
-ENV ADMIN_NAME Miney
-ENV DEFAULT_PASSWORD ""
-ENV MGFLAT_GROUND_LEVEL 8
-ENV WATER_LEVEL 1
-ENV STATIC_SPAWNPOINT ""
+ENV MT_NAME Miney
+ENV MT_DEFAULT_PASSWORD ""
+ENV MT_SECURE__TRUSTED_MODS "mineysocket"
+ENV MT_APPEND "mineysocket.host_ip = *;"
 
 COPY --from=compile /usr/local/share/minetest /usr/local/share/minetest
 COPY --from=compile /usr/local/bin/minetestserver /usr/local/bin/minetestserver
@@ -53,7 +47,7 @@ RUN apk add --no-cache sqlite-libs curl gmp libstdc++ libgcc libpq luajit lua5.1
 	chown -R minetest:minetest /var/lib/minetest && \
 	chmod +x /usr/local/bin/entrypoint.sh
 
-COPY --chown=minetest:minetest minetest.conf /var/lib/minetest/.minetest/minetest.conf
+COPY --from=compile --chown=minetest:minetest /usr/src/minetest/minetest.conf.example /var/lib/minetest/.minetest/minetest.conf
 COPY --chown=minetest:minetest worlds/ /var/lib/minetest/.minetest/worlds/
 
 WORKDIR /var/lib/minetest
