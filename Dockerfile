@@ -10,7 +10,7 @@ WORKDIR /usr/src/minetest
 RUN apk add --no-cache git build-base irrlicht-dev cmake bzip2-dev libpng-dev \
 		jpeg-dev libxxf86vm-dev mesa-dev sqlite-dev libogg-dev \
 		libvorbis-dev openal-soft-dev curl-dev freetype-dev zlib-dev \
-		gmp-dev jsoncpp-dev postgresql-dev luajit-dev ca-certificates && \
+		gmp-dev jsoncpp-dev postgresql-dev leveldb-dev luajit-dev ca-certificates && \
 	git clone --depth=1 --single-branch --branch ${MINETEST_VERSION} -c advice.detachedHead=false https://github.com/minetest/minetest.git . && \
 	git clone --depth=1 -b ${MINETEST_GAME_VERSION} https://github.com/minetest/minetest_game.git ./games/minetest_game && \
 	rm -fr ./games/minetest_game/.git
@@ -23,6 +23,7 @@ RUN cd build && \
 		-DBUILD_SERVER=TRUE \
 		-DBUILD_UNITTESTS=FALSE \
 		-DBUILD_CLIENT=FALSE \
+		-DENABLE_LEVELDB=ON \
 		-DVERSION_EXTRA=miney_docker && \
 	make && \
 	make install && \
@@ -41,7 +42,7 @@ COPY --from=compile /usr/local/share/minetest /usr/local/share/minetest
 COPY --from=compile /usr/local/bin/minetestserver /usr/local/bin/minetestserver
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-RUN apk add --no-cache sqlite-libs curl gmp libstdc++ libgcc libpq luajit lua5.1-socket lua5.1-cjson bash && \
+RUN apk add --no-cache sqlite-libs leveldb postgresql-libs curl gmp libstdc++ libgcc libpq luajit lua5.1-socket lua5.1-cjson bash && \
 	adduser -D minetest --uid 30000 -h /var/lib/minetest && \
 	mkdir /var/lib/minetest/.minetest && \
 	chown -R minetest:minetest /var/lib/minetest && \

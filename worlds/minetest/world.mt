@@ -1,5 +1,5 @@
 gameid = minetest
-backend = sqlite3
-auth_backend = sqlite3
-player_backend = sqlite3
+backend = leveldb
+auth_backend = leveldb
+player_backend = leveldb
 load_mod_mineysocket = true
