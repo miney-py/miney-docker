@@ -8,6 +8,7 @@ for var in $(compgen -e); do
     var_lower="$(echo "${var//__/\.}"| tr '[:upper:]' '[:lower:]')"  # __ to . and to lower case
     var_value=$(printenv "$var")
     sed -i "s/^# ${var_lower#*mt_} =.*/${var_lower#*mt_} = $var_value/" $MINETEST_CONF
+    sed -i "s/^${var_lower#*mt_} =.*/${var_lower#*mt_} = $var_value/" $MINETEST_CONF
   fi
 done
 
