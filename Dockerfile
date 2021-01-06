@@ -28,7 +28,7 @@ RUN cd build && \
 	make && \
 	make install && \
 	mkdir /usr/local/share/minetest/mods && \
-	git clone --depth=1 -b master https://github.com/miney-py/mineysocket.git /usr/local/share/minetest/mods/mineysocket && \
+	git clone --depth=1 -b dev https://github.com/miney-py/mineysocket.git /usr/local/share/minetest/mods/mineysocket && \
 	rm -fr ./mods/mineysocket/.git
 
 FROM alpine:latest AS server
