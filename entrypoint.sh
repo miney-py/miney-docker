@@ -14,7 +14,7 @@ done
 
 echo "$MT_APPEND" | tr ";" "\n" >> $MINETEST_CONF
 
-if [ "$MTDEFAULT_PASSWORD" = "" ]
+if [ "$MTDEFAULT_PASSWORD" == "" ]
 then
   echo "The admin username is '$MT_NAME' and the default password for all users is empty."
 else
